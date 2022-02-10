@@ -42,10 +42,15 @@ router.get("/:id", (req, res) => {
       },
       {
         model: Tag,
-        attributes: ["tag_name"],
+        attributes: ['tag_name'],
       },
-    ],
-  });
+    ]
+  })
+    .then((tagData) => res.json(tagData))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err)
+    })
 });
 
 // create new product
